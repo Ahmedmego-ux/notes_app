@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_5/views/widgets/notesapp_body.dart';
 
 class NotesView extends StatelessWidget{
    Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(title: Row(
-          children: [
-            Text('notes'),
-            Icon(Icons.search)
-          ],
-        ),),
+       
+        body:NotesappBody() ,
     );
   }
 }
