@@ -12,7 +12,12 @@ class NotceApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 62, 57, 57)
+
+      ),
       home: NotesView(),
     );
   }
