@@ -14,7 +14,9 @@ class NotesappBody extends StatelessWidget{
           SizedBox(
             height: 40,
           ),
-          CustomeAppbar(),
+          CustomeAppbar(
+            namebar: 'Notes',
+          ),
          // SizedBox(height: 5,),
          Expanded(child:  listnotesitem())
         ],

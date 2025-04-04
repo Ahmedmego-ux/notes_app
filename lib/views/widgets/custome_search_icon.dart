@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class customesearchicon extends StatelessWidget {
+  final String iconName;
   const customesearchicon({
-    super.key,
+
+    super.key, required this.iconName,
   });
 
   @override
