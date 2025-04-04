@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class customesearchicon extends StatelessWidget {
-  final String iconName;
+  final IconData icon;
   const customesearchicon({
 
-    super.key, required this.iconName,
+    super.key, required this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Icon(Icons.search, size: 30,),
+      child: Icon(icon, size: 30,),
       
       height: 45,
       width: 45,

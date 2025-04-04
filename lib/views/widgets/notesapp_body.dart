@@ -16,6 +16,7 @@ class NotesappBody extends StatelessWidget{
           ),
           CustomeAppbar(
             namebar: 'Notes',
+            icon: Icons.search,
           ),
          // SizedBox(height: 5,),
          Expanded(child:  listnotesitem())
