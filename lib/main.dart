@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_5/constant.dart';
 import 'package:flutter_application_5/views/notes_view.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
+void main()async {
+await Hive.initFlutter();
+await Hive.openBox(knotesbox);
+
   runApp( NotceApp());
 }
 
 class NotceApp extends StatelessWidget {
-  
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
