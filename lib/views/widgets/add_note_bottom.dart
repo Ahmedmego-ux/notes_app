@@ -11,11 +11,11 @@ class Addnotebottomshet extends StatelessWidget {
       child: SingleChildScrollView(
         child: BlocConsumer<AddNoteCubit, AddNoteState>(
           listener: (context, state) {
-            if(state ==AddNoteSucces){
+            if(state is AddNoteSucces){
               Navigator.pop(context);
             }
-            if(state== AddNoteFailur){
-              print('failed add note try again ');
+            if(state is AddNoteFailur){
+              print('failed ${state.errormessage} ');
             }
           },
           builder: (context, state) {
