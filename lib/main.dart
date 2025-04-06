@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_5/add_note_cubit/cubit/add_note_cubit.dart';
 import 'package:flutter_application_5/constant.dart';
 import 'package:flutter_application_5/models/note_model.dart';
 import 'package:flutter_application_5/views/notes_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 
 void main()async {
@@ -15,15 +17,25 @@ await Hive.openBox(knotesbox);
 class NotceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color.fromARGB(255, 62, 57, 57)
-
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AddNoteCubit(),
+        ),
+       
+      ],
+      
+   
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'Poppins',
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: const Color.fromARGB(255, 62, 57, 57)
+      
+        ),
+        home: NotesView(),
       ),
-      home: NotesView(),
     );
   }
 
