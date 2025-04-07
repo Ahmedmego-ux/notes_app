@@ -6,22 +6,24 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class Addnotebottomshet extends StatelessWidget {
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      child: SingleChildScrollView(
+    return BlocProvider(
+      create: (context) =>AddNoteCubit(),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
         child: BlocConsumer<AddNoteCubit, AddNoteState>(
           listener: (context, state) {
-            if(state is AddNoteSucces){
+            if (state is AddNoteSucces) {
               Navigator.pop(context);
             }
-            if(state is AddNoteFailur){
+            if (state is AddNoteFailur) {
               print('failed ${state.errormessage} ');
             }
           },
           builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is AddNoteLoading?true:false,
-              child: addnoteform());
+            return 
+            AbsorbPointer(
+              absorbing: state is AddNoteLoading ? true:false,
+              child: SingleChildScrollView(child: addnoteform()));
           },
         ),
       ),
