@@ -4,6 +4,7 @@ import 'package:flutter_application_5/models/note_model.dart';
 import 'package:flutter_application_5/views/widgets/custome_bottom.dart';
 import 'package:flutter_application_5/views/widgets/custome_text_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class addnoteform extends StatefulWidget {
   const addnoteform({
@@ -54,11 +55,13 @@ class _addnoteformState extends State<addnoteform> {
                 isloading:  state is AddNoteLoading?true:false,
                 onTap: () {
                   if (formKey.currentState!.validate()) {
+                    var currentdate=DateTime.now();
+                    var formatcurrentdate=DateFormat.yMd().format(currentdate);
                     formKey.currentState!.save();
                     var notemodel = NoteModel(
                         title: title!,
                         subtitle: content!,
-                        date: DateTime.now().toString(),
+                        date: formatcurrentdate,
                         color: Colors.blue.value);
                     BlocProvider.of<AddNoteCubit>(context).addnote(notemodel);
                   } else {
@@ -77,3 +80,5 @@ class _addnoteformState extends State<addnoteform> {
     );
   }
 }
+
+
