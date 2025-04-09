@@ -19,7 +19,9 @@ class NotesappBody extends StatelessWidget{
             icon: Icons.search,
           ),
          // SizedBox(height: 5,),
-         Expanded(child:  listnotesitem())
+         Expanded(child:  listnotesitem(
+        
+         ))
         ],
       ),
     );

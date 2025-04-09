@@ -6,12 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class listnotesitem extends StatelessWidget {
   @override
-  
+   
   Widget build(BuildContext context) {
+      Future.microtask(() => BlocProvider.of<NotesCubit>(context).fetchNotes());
+     
 
     return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
-       List<NoteModel> notes =BlocProvider.of<NotesCubit>(context).notes??[];
+        List<NoteModel> notes = BlocProvider.of<NotesCubit>(context).notes??[];
         return Padding(
           
           padding: EdgeInsets.symmetric(vertical: 16),
@@ -21,7 +23,9 @@ class listnotesitem extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.symmetric(vertical: 5),
-                  child: notesitem(),
+                  child: notesitem(
+                    note: notes[index],
+                  ),
                 );
               }),
         );
