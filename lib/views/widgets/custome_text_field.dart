@@ -5,7 +5,8 @@ class CustomeTextField extends StatelessWidget{
   final String hintText;
   final int maxlines;
   final void Function(String?)? onSaved;
-  const CustomeTextField({super.key, required this.hintText,  this.maxlines=1, this.onSaved});
+ final void Function(String)? onChanged;
+   CustomeTextField({super.key, required this.hintText,  this.maxlines=1, this.onSaved, this.onChanged});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -16,6 +17,7 @@ class CustomeTextField extends StatelessWidget{
           return null;
         }
       },
+      onChanged:onChanged ,
       onSaved:onSaved ,
       maxLines: maxlines,
       cursorColor: kprimarycolor,
