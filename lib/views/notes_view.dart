@@ -8,25 +8,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NotesView extends StatelessWidget {
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubit(),
-      
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-                isScrollControlled: true,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)),
-                context: context,
-                builder: (context) {
-                  return Addnotebottomshet();
-                });
-          },
-          child: Icon(Icons.add),
-        ),
-        body: NotesappBody(),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+              isScrollControlled: true,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
+              context: context,
+              builder: (context) {
+                return Addnotebottomshet();
+              });
+        },
+        child: Icon(Icons.add),
       ),
+      body: NotesappBody(),
     );
   }
 }

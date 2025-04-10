@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_5/cubits/add_notes/add_note_cubit.dart';
 import 'package:flutter_application_5/constant.dart';
+import 'package:flutter_application_5/cubits/notes/notes_cubit.dart';
 import 'package:flutter_application_5/models/note_model.dart';
 import 'package:flutter_application_5/simple_bloc_observer.dart';
 import 'package:flutter_application_5/views/notes_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 
-void main()async {
-  Bloc.observer=SimpleBlocObserver();
-await Hive.initFlutter();
-Hive.registerAdapter(NoteModelAdapter());
-await Hive.openBox<NoteModel>(knotesbox);
+void main() async {
+  Bloc.observer = SimpleBlocObserver();
+  await Hive.initFlutter();
+  Hive.registerAdapter(NoteModelAdapter());
+  await Hive.openBox<NoteModel>(knotesbox);
 
-  runApp( NotceApp());
+  runApp(NotceApp());
 }
 
 class NotceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color.fromARGB(255, 62, 57, 57)
-    
+    return BlocProvider(
+         create: (context) => NotesCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            fontFamily: 'Poppins',
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: const Color.fromARGB(255, 62, 57, 57)),
+        home: NotesView(),
       ),
-      home: NotesView(),
     );
   }
 
