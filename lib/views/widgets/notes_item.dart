@@ -34,7 +34,9 @@ class notesitem extends StatelessWidget{
           padding: const EdgeInsets.only(top: 20,bottom: 16),
           child: Text(note.subtitle,style: TextStyle(color: Colors.black.withOpacity(0.5),fontSize: 18)),
         ),
-        trailing: IconButton(onPressed: (){},
+        trailing: IconButton(onPressed: (){
+          note.delete();
+        },
          icon: Icon(FontAwesomeIcons.trash,color: (Colors.black),size: 27,)),
          
        
